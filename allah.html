@@ -1,0 +1,58 @@
+
+var bab=[];
+function setup() {
+createCanvas(340,600);
+for(var i=0;i<100;i++) {
+bab[i]= new Bann();
+}
+}
+function draw() {
+background (0);
+for(var i=0;i<bab.length;i++) {
+bab[i].text();
+bab[i].ro();
+bab[i].display();
+
+}
+}
+function Bann() {
+this.c=255;
+this.q=255;
+this.size=7;
+this.o=255;
+this.l=255;
+this.a=0;
+this.b=-5;
+this.x=170;
+this.y=600;
+this.ro=function () {
+if(this.y<300) {
+this.q=0;
+}
+fill(255,0,0,this.q);
+rect(this.x-1,this.y-3,3,3);
+}
+this.text=function () {
+textSize(30);
+noStroke();
+fill(255);
+text ("drži prst na ekranu",20,550)
+}
+this.display=function () {
+if(mouseIsPressed) {
+stroke (this.c,this.o,this.l);
+fill(this.c,this.o,this.l)
+rect(this.x,this.y,1,this.size);
+if(this.y<300 && this.y>293) {
+this.c=random(0,255);
+this.o=random(0,255);
+this.l=random(0,255);
+this.a=random(-3,3);
+this.b=random(-3,3);
+this.size=1;
+}
+this.x=this.x+this.a;
+this.y=this.y+this.b;
+}
+}
+}
